@@ -1,0 +1,32 @@
+body {
+    max-width: 600px;
+}
+
+.calculator-frame {
+border-style: solid;
+border-width: 5px;
+}
+
+button {
+    font-family: arial, sans-serif;
+    font-size: 80px;
+    min-width: 90px;
+    min-height: 90px;
+    margin: 5px;
+}
+
+.calculator-display {
+    border-style: solid;
+    border-width: 5px;
+    min-height: 90px;
+    font-size: 80px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 5px;
+    text-align: right;
+    padding: 0 5px;
+}
+
+.calculator-buttons {
+    margin: 5x;
+}
+
