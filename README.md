@@ -7,4 +7,4 @@
 
 05/08/2022
 - Implemented basic calculation function.
-- Implementing basic layout of calculator.
+- Implemented basic layout of calculator.
