@@ -24,7 +24,7 @@ function operate(a, operator, b) {
     return operator(a,b);
 }
 
-let result = 0;
+let values = []
 
 const numArr = {
     zero: 0,
@@ -47,9 +47,16 @@ const display = document.querySelector('.calculator-display');
 numbers.addEventListener('click', (e) => {
     if (e.target.id == 'numbers' || e.target.id == 'clear') {
         return;
-    } else {
+    } else if (display.textContent.indexOf('+') == -1 ||
+        display.textContent.indexOf('-') == -1 ||
+        display.textContent.indexOf('*') == -1 ||
+        display.textContent.indexOf('/') == -1) {
         display.textContent += numArr[`${e.target.id}`]
-   }})
+        values[0] = display.textContent;
+        console.log(values[0]);
+        } 
+    }
+)
 
 // clear button //
 const clear = document.querySelector('#clear')
@@ -70,45 +77,30 @@ const opArr = {
 operators.addEventListener('click', (e) => {
     if (e.target.id == 'operators' || e.target.id == 'equal') {
         return;
+    } else if (display.textContent.indexOf('/0') > 0 ||
+        display.textContent.indexOf('Infinity') > 0) {
+            display.textContent = 'Error!';
+    } else if (display.textContent.indexOf('+') > 0 ||
+        display.textContent.indexOf('-') > 0 ||
+        display.textContent.indexOf('*') > 0 ||
+        display.textContent.indexOf('/') > 0) {
+            let calc = display.textContent
+            let result = eval(calc)
+            display.textContent = result + opArr[`${e.target.id}`];
+            console.log(result);
+       } else {
+            display.textContent += opArr[`${e.target.id}`];
+            console.log(display.textContent);
+       };   
+})
+
+const equal = document.querySelector('#equal')
+
+equal.addEventListener('click', () => {
+    if (display.textContent.indexOf('/0') > 0) {
+        display.textContent = 'Error!';
     } else {
-        display.textContent += opArr[`${e.target.id}`]
-        console.log(typeof display.textContent) 
+        let result = eval(display.textContent);
+        display.textContent = result;
     };
 })
-
-const equal = document.querySelector('#equal')
-
-equal.addEventListener('click', () => {
-    let result = eval(display.textContent);
-    display.textContent = result;
-})
-
-// Operator Events //
-/*
-const plus = document.querySelector('#plus')
-const minus = document.querySelector('#minus')
-const times = document.querySelector('#multiply')
-const split = document.querySelector('#divide')
-const equal = document.querySelector('#equal')
-
-const opArr = {
-    plus: '+',
-    minus: '-',
-    multiply: '*',
-    divide: '/',
-}
-
-plus.addEventListener('click', () => {
-    let a = result + Number(display.textContent);
-    console.log(a);
-    display.textContent = '';
-    let operator = add(a,b);
-    return operator;
-});
-
-equal.addEventListener('click', () => {
-    let b = result + Number(display.textContent);
-    console.log(b);
-    return operate;
-})
-*/

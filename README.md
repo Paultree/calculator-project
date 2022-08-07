@@ -21,3 +21,12 @@
     - Your calculator should not evaluate more than a single pair of numbers at a time. If we are doing a multi operator calculation, it should show result from first operation and then follow-up calculation from 2nd operation and so on and so forth.
     - Be able to do decimal calculation.
     - Put an error message when try to divide by 0.
+
+07/08/2022
+- Now able to do multiple operations one operation at at time.
+- Able to do decimal calculations.
+- Error message appears when user tries to divide by 0.
+- TBD:
+    - Implement CSS styling that removes the decimal button once one has been placed.
+    - Only allows decimals up to 2 places for each result.
+    - Allow a finite amount of numbers/characters on the 'display.textContent' at a time.
