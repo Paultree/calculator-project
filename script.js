@@ -78,7 +78,7 @@ const operators = document.querySelector('#operators');
 let op;
 
 operators.addEventListener('click', (e) => {
-    if (e.target.id == 'operators') {
+    if (e.target.id == 'operators' || e.target.id == 'equal') {
         return;
     } else if (typeof values['a'] === 'string') {
         values['a'] = Number(display.textContent);
@@ -93,8 +93,12 @@ operators.addEventListener('click', (e) => {
         op = values[`${e.target.id}`];
     }
 })
-    
-    
 
-/* const equal = document.querySelector('#equal') */
+ const equal = document.querySelector('#equal') 
+
+ equal.addEventListener('click', () => {
+    values['b'] = Number(display.textContent);
+        let result = operate(values['a'], op, values['b']);
+        display.textContent = result;
+ })
 
