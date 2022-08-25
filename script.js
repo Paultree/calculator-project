@@ -57,7 +57,7 @@ numbers.addEventListener('click', (e) => {
     } else if (typeof values['a'] === 'number' && values['b'] === '') {
         updateDisplay();
         display.textContent += numArr[`${e.target.id}`];
-        values['b'] = display.textContent;
+        values['b'] = display.textContent; //loophole with the rule//
     } else {
         display.textContent += numArr[`${e.target.id}`];
     }

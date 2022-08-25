@@ -30,3 +30,8 @@
     - Implement CSS styling that removes the decimal button once one has been placed.
     - Only allows decimals up to 2 places for each result.
     - Allow a finite amount of numbers/characters on the 'display.textContent' at a time.
+
+8/08/2022
+- Implemented functional calculator that does multi-operant calculations one calculation at a time.
+- Will need to implement a backspace/delete function that only backspaces 1 unit instead of clearing out the board.
+- 
