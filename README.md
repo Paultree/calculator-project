@@ -6,7 +6,7 @@ Purpose:
 - To practice DOM manipulation and reinforce JS concepts: objects, arrays, iterators, loops, if statements...
 - To have fun and to see how much I have personally developed as a programmer by comparing the new branch to the alt branch.
 
-MVP:
+MVP(Taken from The Odin Project):
 
 - Create a function for basic math operators:
 
