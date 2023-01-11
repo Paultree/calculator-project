@@ -1,104 +1,120 @@
-// math operators //
-function plus(a,b) {
-    return a + b;
+const opObj = {
+  plus: plus,
+  minus: minus,
+  multiply: multiply,
+  divide: divide,
+  clear: clear,
+  flip: flip,
+  percent: percent,
+};
+
+const numObj = {
+  zero: 0,
+  one: 1,
+  two: 2,
+  three: 3,
+  four: 4,
+  five: 5,
+  six: 6,
+  seven: 7,
+  eight: 8,
+  nine: 9,
+  decimal: ".",
+};
+
+function plus(arr) {
+  return arr.reduce((total, accum) => {
+    return total + accum;
+  });
 }
 
-function minus(a,b) {
-    return a - b;
+function minus(arr) {
+  return arr.reduce((total, accum) => {
+    return total - accum;
+  });
 }
 
-function multiply(a,b) {
-    return a * b;
+function multiply(arr) {
+  return arr.reduce((total, accum) => {
+    return total * accum;
+  });
 }
 
-function divide(a,b) {
-    return a/b;
+function divide(arr) {
+  return arr.reduce((total, accum) => {
+    return total / accum;
+  });
 }
 
-// simple calculation function //
-function operate(a, operator, b) {
-    return operator(a,b);
+function compute(arr) {
+  return opObj[opArr[0]](arr);
 }
 
-function updateDisplay () {
-    display.textContent = '';
+function clear() {
+  numArr = [];
+  opArr = [];
+  displayArr = [];
+  display.innerText = "";
 }
 
-let values = {
-    a: 'string',
-    b: 'string',
-    plus: plus,
-    minus: minus,
-    multiply: multiply,
-    divide: divide,
+function flip() {
+  if (displayArr.includes("-")) {
+    console.log("1");
+    displayArr.shift("-");
+  } else {
+    displayArr.unshift("-");
+  }
 }
 
-const numArr = {
-    zero: 0,
-    one: 1,
-    two: 2,
-    three: 3,
-    four: 4,
-    five: 5,
-    six: 6,
-    seven: 7,
-    eight: 8,
-    nine: 9,
-    decimal: '.',
+function percent() {
+  let percent = Number(displayArr.join("")) / 100;
+  displayArr = String(percent).split("");
 }
 
-// Simple number pressing function //
-const numbers = document.querySelector('#numbers');
-const display = document.querySelector('.calculator-display');
+const display = document.querySelector(".display");
 
-numbers.addEventListener('click', (e) => {
-    if (e.target.id == 'numbers' || e.target.id == 'clear') {
-        return;
-    } else if (typeof values['a'] === 'number' && values['b'] === '') {
-        updateDisplay();
-        display.textContent += numArr[`${e.target.id}`];
-        values['b'] = display.textContent; //loophole with the rule//
-    } else {
-        display.textContent += numArr[`${e.target.id}`];
-    }
+const numButtons = document.querySelector("#numbers");
+
+const opButtons = document.querySelector("#operators");
+
+const container = document.getElementById("container");
+
+let numArr = [];
+
+let opArr = [];
+
+let displayArr = [];
+
+numButtons.addEventListener("click", (e) => {
+  if (opArr.length > 1) {
+    opArr.shift();
+  }
+
+  if (numObj.hasOwnProperty(e.target.id)) {
+    displayArr.push(numObj[e.target.id]);
+  } else {
+    opObj[e.target.id]();
+  }
+
+  display.innerText = displayArr.join("");
 });
-        
 
-// clear button //
-const clear = document.querySelector('#clear')
+opButtons.addEventListener("click", (e) => {
+  if (numArr.length < 2) {
+    numArr.push(Number(displayArr.join("")));
+  }
 
-clear.addEventListener('click', () => {
-    display.textContent = '';
-    values['a'] = '';
-    values['b'] = '';
-})
+  displayArr = [];
 
-const operators = document.querySelector('#operators');
+  if (opArr.length < 2) {
+    opArr.push(e.target.id);
+  }
 
-let op;
+  let result = compute(numArr);
+  display.innerText = result;
+  numArr = [result];
 
-operators.addEventListener('click', (e) => {
-    if (e.target.id == 'operators' || e.target.id == 'equal') {
-        return;
-    } else if (typeof values['a'] === 'string') {
-        values['a'] = Number(display.textContent);
-        op = values[`${e.target.id}`]
-        updateDisplay();
-    } else if (typeof values['a'] === 'number') {
-        values['b'] = Number(display.textContent);
-        let result = operate(values['a'], op, values['b']);
-        display.textContent = result;
-        values['a'] = result;
-        values['b'] = '';
-        op = values[`${e.target.id}`];
-    }
-})
-
- const equal = document.querySelector('#equal') 
-
- equal.addEventListener('click', () => {
-    values['b'] = Number(display.textContent);
-        let result = operate(values['a'], op, values['b']);
-        display.textContent = result;
- })
-
+  if (e.target.id === "equal") {
+    opArr = [];
+  }
+});

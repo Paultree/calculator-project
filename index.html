@@ -1,40 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Simple Calculator</title>
     <link rel="stylesheet" type="text/css" href="styles.css" />
-</head>
-<body>
-<h1>CALCULATOR</h1>
-<div class = calculator-frame>
-    <div class = calculator-display></div>
-    <div class = calculator-buttons>
-        <div class = numbers id = numbers>
-            <button id = clear>C</button>
-            <button id = zero>0</button>
-            <button id = decimal>.</button>
-            <button id = one>1</button>
-            <button id = two>2</button>
-            <button id = three>3</button>
-            <button id = four>4</button>
-            <button id = five>5</button>
-            <button id = six>6</button>
-            <button id = seven>7</button>
-            <button id = eight>8</button>
-            <button id = nine>9</button>
+  </head>
+  <body>
+    <div class="container" id="container">
+      <div class="display" data-placeholder="0"></div>
+      <div class="calculator">
+        <div class="calculator__buttons calculator--left" id="numbers">
+          <div class="calculator__buttons calculator__buttons--lightgray" id="numOps">
+            <button id="clear">AC</button>
+            <button id="flip">+/-</button>
+            <button id="percent">%</button>
+          </div>
+          
+          <div class="calculator__buttons calculator__buttons--darkgray">
+            <button id="seven">7</button>
+            <button id="eight">8</button>
+            <button id="nine">9</button>
+            </div>
+            <div class="calculator__buttons calculator__buttons--darkgray">
+            <button id="four">4</button>
+            <button id="five">5</button>
+            <button id="six">6</button>
+            </div>
+            <div class="calculator__buttons calculator__buttons--darkgray">
+            <button id="one">1</button>
+            <button id="two">2</button>
+            <button id="three">3</button>
+            </div>
+          <div class="calculator__buttons calculator__buttons--bottom calculator__buttons--darkgray">
+            <button id="zero">0</button>
+            <button id="decimal">.</button>
+            </div>
+          </div>
+          <div class="calculator__buttons calculator__buttons--orange calculator--right" id="operators">
+          <button id="plus">+</button>
+          <button id="minus">-</button>
+          <button id="multiply">x</button>
+          <button id="divide">/</button>
+          <button id="equal">=</button>
         </div>
-        <div class = operators id = operators>
-            <button id = plus>+</button>
-            <button id = minus>-</button>
-            <button id = multiply>x</button>
-            <button id = divide>/</button>
-            <button id = equal>=</button>
         </div>
+        
+      </div>
     </div>
-</div>
-</body>
-<script type="text/javascript" src="script.js"></script>
+  </body>
+  <script type="text/javascript" src="script.js"></script>
 </html>

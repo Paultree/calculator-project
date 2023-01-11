@@ -1,49 +1,84 @@
-body {
-    max-width: 515px;
-    margin: auto;
-    font-family: arial, sans-serif;
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: none;
+  justify-content: center;
+  align-items: center;
+  background: black;
 }
 
-h1 {
-    text-align: center;;
+.display {
+  font-size: 4rem;
+  padding: 0 1.3rem;
+  width: 15rem;
+  color: white;
+  text-align: end;
+  border: 1px solid black;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden;
 }
 
-.calculator-frame {
-border-style: solid;
-border-width: 5px;
-border-radius: 0.01;
+[data-placeholder]:empty:before {
+  color: white;
+  content: attr(data-placeholder);
 }
 
-button {
-    font-family: arial, sans-serif;
-    font-size: 80px;
-    min-width: 90px;
-    min-height: 90px;
-    margin: 5px;
+.calculator {
+  display: flex;
+  border: 1px solid black;
+}
+.calculator__display {
+  border: 1px solid black;
+}
+.calculator--left {
+  flex-direction: column;
+}
+.calculator--right {
+  flex-direction: column;
+}
+.calculator__buttons {
+  display: flex;
+}
+.calculator__buttons--bottom {
+  display: flex;
+}
+.calculator__buttons--bottom > :first-child {
+  flex: 2;
+}
+.calculator__buttons--lightgray > button {
+  background: lightgray;
+  color: black;
+}
+.calculator__buttons--lightgray > button:active {
+  color: black;
+  background: white;
+}
+.calculator__buttons--darkgray > button {
+  background: darkgray;
+  color: white;
+}
+.calculator__buttons--darkgray > button:active {
+  color: darkgray;
+  background: white;
+}
+.calculator__buttons--orange > button {
+  background: orange;
+  color: white;
+}
+.calculator__buttons--orange > button:active {
+  color: orange;
+  background: white;
+}
+.calculator__buttons > button {
+  padding: 1rem;
+  border-radius: 5rem;
+  font-size: 1.2rem;
+  width: 4rem;
+  height: 4rem;
+  border: none;
+  margin: 0.2rem;
 }
 
-.calculator-display {
-    border-style: solid;
-    border-width: 5px;
-    min-height: 90px;
-    font-size: 75px;
-    overflow-wrap: break-word;
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 5px;
-    text-align: right;
-    padding: 0 5px;
-}
-
-.calculator-buttons {
-    margin: 5x;
-    display: flex;
-}
-
-.numbers {
-    display: grid;
-    grid-template-columns: auto auto auto;
-}
-
-#equal {
-    min-width: 195px;
-}
+/*# sourceMappingURL=styles.css.map */
