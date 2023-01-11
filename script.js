@@ -1,106 +1,120 @@
-// math operators //
-function add(a,b) {
-    result += a + b;
-    return result;
+const opObj = {
+  plus: plus,
+  minus: minus,
+  multiply: multiply,
+  divide: divide,
+  clear: clear,
+  flip: flip,
+  percent: percent,
+};
+
+const numObj = {
+  zero: 0,
+  one: 1,
+  two: 2,
+  three: 3,
+  four: 4,
+  five: 5,
+  six: 6,
+  seven: 7,
+  eight: 8,
+  nine: 9,
+  decimal: ".",
+};
+
+function plus(arr) {
+  return arr.reduce((total, accum) => {
+    return total + accum;
+  });
 }
 
-function subtract(a,b) {
-    result += a - b;
-    return result;
+function minus(arr) {
+  return arr.reduce((total, accum) => {
+    return total - accum;
+  });
 }
 
-function multiply(a,b) {
-    result += a * b;
-    return result;
+function multiply(arr) {
+  return arr.reduce((total, accum) => {
+    return total * accum;
+  });
 }
 
-function divide(a,b) {
-    result += a/b;
-    return result;
+function divide(arr) {
+  return arr.reduce((total, accum) => {
+    return total / accum;
+  });
 }
 
-// simple calculation function //
-function operate(a, operator, b) {
-    return operator(a,b);
+function compute(arr) {
+  return opObj[opArr[0]](arr);
 }
 
-let values = []
-
-const numArr = {
-    zero: 0,
-    one: 1,
-    two: 2,
-    three: 3,
-    four: 4,
-    five: 5,
-    six: 6,
-    seven: 7,
-    eight: 8,
-    nine: 9,
-    decimal: '.',
+function clear() {
+  numArr = [];
+  opArr = [];
+  displayArr = [];
+  display.innerText = "";
 }
 
-// Simple number pressing function //
-const numbers = document.querySelector('#numbers');
-const display = document.querySelector('.calculator-display');
-
-numbers.addEventListener('click', (e) => {
-    if (e.target.id == 'numbers' || e.target.id == 'clear') {
-        return;
-    } else if (display.textContent.indexOf('+') == -1 ||
-        display.textContent.indexOf('-') == -1 ||
-        display.textContent.indexOf('*') == -1 ||
-        display.textContent.indexOf('/') == -1) {
-        display.textContent += numArr[`${e.target.id}`]
-        values[0] = display.textContent;
-        console.log(values[0]);
-        } 
-    }
-)
-
-// clear button //
-const clear = document.querySelector('#clear')
-
-clear.addEventListener('click', () => {
-    display.textContent = '';
-})
-
-const operators = document.querySelector('#operators');
-
-const opArr = {
-    plus: '+',
-    minus: '-',
-    multiply: '*',
-    divide: '/',
+function flip() {
+  if (displayArr.includes("-")) {
+    console.log("1");
+    displayArr.shift("-");
+  } else {
+    displayArr.unshift("-");
+  }
 }
 
-operators.addEventListener('click', (e) => {
-    if (e.target.id == 'operators' || e.target.id == 'equal') {
-        return;
-    } else if (display.textContent.indexOf('/0') > 0 ||
-        display.textContent.indexOf('Infinity') > 0) {
-            display.textContent = 'Error!';
-    } else if (display.textContent.indexOf('+') > 0 ||
-        display.textContent.indexOf('-') > 0 ||
-        display.textContent.indexOf('*') > 0 ||
-        display.textContent.indexOf('/') > 0) {
-            let calc = display.textContent
-            let result = eval(calc)
-            display.textContent = result + opArr[`${e.target.id}`];
-            console.log(result);
-       } else {
-            display.textContent += opArr[`${e.target.id}`];
-            console.log(display.textContent);
-       };   
-})
+function percent() {
+  let percent = Number(displayArr.join("")) / 100;
+  displayArr = String(percent).split("");
+}
 
-const equal = document.querySelector('#equal')
+const display = document.querySelector(".display");
 
-equal.addEventListener('click', () => {
-    if (display.textContent.indexOf('/0') > 0) {
-        display.textContent = 'Error!';
-    } else {
-        let result = eval(display.textContent);
-        display.textContent = result;
-    };
-})
+const numButtons = document.querySelector("#numbers");
+
+const opButtons = document.querySelector("#operators");
+
+const container = document.getElementById("container");
+
+let numArr = [];
+
+let opArr = [];
+
+let displayArr = [];
+
+numButtons.addEventListener("click", (e) => {
+  if (opArr.length > 1) {
+    opArr.shift();
+  }
+
+  if (numObj.hasOwnProperty(e.target.id)) {
+    displayArr.push(numObj[e.target.id]);
+  } else {
+    opObj[e.target.id]();
+  }
+
+  display.innerText = displayArr.join("");
+});
+
+opButtons.addEventListener("click", (e) => {
+  if (numArr.length < 2) {
+    numArr.push(Number(displayArr.join("")));
+  }
+
+  displayArr = [];
+
+  if (opArr.length < 2) {
+    opArr.push(e.target.id);
+  }
+
+  let result = compute(numArr);
+  display.innerText = result;
+  numArr = [result];
+
+  if (e.target.id === "equal") {
+    opArr = [];
+  }
+});
