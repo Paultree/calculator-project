@@ -1,5 +1,12 @@
 # calculator-project
 
+Image:
+![Alt Text](./project-demo.gif)
+
+Link:
+
+Setup:
+
 Purpose:
 
 - To recreate a simple calculator using JS, HTML and SCSS/CSS.
@@ -27,6 +34,33 @@ MVP(Taken from The Odin Project):
 - Display should populate when you click number buttons. - [x]
 
 - Calculator should not evaluate more than a single pair of numbers at a time. - [x]
+
+Approach:
+
+- To handle a continuous operation, I declared 2 arrays.
+  - One handles the numbers inputted and become stored in 1 array.
+  - Second handles operators clicked and stores into a second array.
+- Created a third array that handles what is outputted on the calculator display.
+- Created a module that houses the main operators (plus, minus, divide, multiply)
+- Decided to build the entire calculator using HTML and some CSS. Then adding functionality to each button using JS.
+
+Reflection:
+
+- Initially wanted to imitate the iPhone calculator design and I think I copied it well.
+- Although most of the logic of the calculator seems to be functional, there are a few things that can be improved:
+  - Functions could be broken down even further to improve purity.
+
+Future Goals:
+
+- Refactor the code and logic to allow for continuous operation even after user clicks the equal button. In iPhone calculator, users are able to continue operation after pressing equal button however I was not able to get it done so in future, I would like to get this right.
+
+Further reading:
+
+Stay in touch:
+
+Licence:
+
+Contribution:
 
 New logs:
 11/01/2023
