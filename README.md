@@ -1,19 +1,20 @@
 # calculator-project
 
-Image:
+# Image:
+
 ![Alt Text](./project-demo.gif)
 
-Link:
+# Link:
 
-Setup:
+# Setup:
 
-Purpose:
+# Purpose:
 
 - To recreate a simple calculator using JS, HTML and SCSS/CSS.
 - To practice DOM manipulation and reinforce JS concepts: objects, arrays, iterators, loops, if statements...
 - To have fun and to see how much I have personally developed as a programmer by comparing the new branch to the alt branch.
 
-MVP(Taken from The Odin Project):
+# MVP(Taken from The Odin Project):
 
 - Create a function for basic math operators:
 
@@ -35,7 +36,7 @@ MVP(Taken from The Odin Project):
 
 - Calculator should not evaluate more than a single pair of numbers at a time. - [x]
 
-Approach:
+# Approach:
 
 - To handle a continuous operation, I declared 2 arrays.
   - One handles the numbers inputted and become stored in 1 array.
@@ -44,25 +45,26 @@ Approach:
 - Created a module that houses the main operators (plus, minus, divide, multiply)
 - Decided to build the entire calculator using HTML and some CSS. Then adding functionality to each button using JS.
 
-Reflection:
+# Reflection:
 
 - Initially wanted to imitate the iPhone calculator design and I think I copied it well.
 - Although most of the logic of the calculator seems to be functional, there are a few things that can be improved:
   - Functions could be broken down even further to improve purity.
 
-Future Goals:
+# Future Goals:
 
 - Refactor the code and logic to allow for continuous operation even after user clicks the equal button. In iPhone calculator, users are able to continue operation after pressing equal button however I was not able to get it done so in future, I would like to get this right.
 
-Further reading:
+# Further reading:
 
-Stay in touch:
+# Stay in touch:
 
-Licence:
+# Licence:
 
-Contribution:
+# Contribution:
 
-New logs:
+# logs:
+
 11/01/2023
 
 - Updated the HTML + CSS to imitate the iphone calculator aesthetic.
@@ -70,7 +72,8 @@ New logs:
 - Refactored JS to make it more readable/understandable.
 - Logic includes manipulating arrays instead of just the display inner text like in the old project.
 
-<!-- Old logs:
+# Old logs:
+
 04/08/2022
 
 - Implemented basic math operation functions
@@ -112,4 +115,3 @@ New logs:
 
 - Implemented functional calculator that does multi-operant calculations one calculation at a time.
 - Will need to implement a backspace/delete function that only backspaces 1 unit instead of clearing out the board.
-- -->
